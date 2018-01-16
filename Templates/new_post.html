@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Build A Blog</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+<header>
+<nav><a href="/blog">Main Blog Page</a> <a href="/newpost">Add Blog Entry</a></nav>
+</header>  
+
+{% block content %}    
+    
+<h1>Add Blog Entry</h1>
+    <form action="/newpost" method='POST'>
+        <label>
+            <span class="form_label">Blog Entry Title:</span>
+            <input name="blog_title" type="text" value="{{post_title}}">
+        </label>
+        <p class="error">{{title_error}} &nbsp;</p>
+        <label>
+            <span class="form_label">Your New Blog Entry:</span>
+            <textarea name="blog_post" type="textarea" rows="10" cols="100">{{post_entry}}</textarea>
+        </label>
+        <p class="error">{{blog_entry_error}} &nbsp;</p>
+        <input class="submit" type="submit" value="Add Entry" />
+    </form>
+
+{% endblock %} 
+
+</body>
+</html>
