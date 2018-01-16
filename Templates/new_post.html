@@ -5,7 +5,7 @@
 <h1>Add Blog Entry</h1>
     <form action="/newpost" method='POST'>
         <label>Blog Entry Title:<input name="blog_title" type="text" value="{{post_title}}"></label>
-        <p class="error">{{title_error}}</p>
+        <p class="error">{{blog_title_error}}</p>
         <label>Your New Blog Entry:<textarea name="blog_post" type="textarea" rows="10" cols="100">{{post_entry}}</textarea></label>
         <p class="error">{{blog_entry_error}}</p>
         <input class="submit" type="submit" value="Add Entry"/>

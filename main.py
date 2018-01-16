@@ -19,25 +19,25 @@ class Blog(db.Model):
 
 @app.route('/')
 def index():
-    all_blog_posts = Blog.query.all()
-    return render_template('blog.html', posts=all_blog_posts)
+    all_posts = Blog.query.all()
+    return render_template('all_posts.html', posts=all_posts)
 
 @app.route('/blog')
 def show_blog():
     post_id = request.args.get('id')
     if (post_id):
-        ind_post = Blog.query.get(post_id)
-        return render_template('ind_post.html', ind_post=ind_post)
+        one_post = Blog.query.get(post_id)
+        return render_template('one_post.html', one_post=one_post)
     else:
         post_id = request.args.get('id')
-        all_blog_posts = Blog.query.all()
-        return render_template('blog.html', posts=all_blog_posts)
+        all_posts = Blog.query.all()
+        return render_template('all_posts.html', posts=all_posts)
 
 @app.route('/newpost', methods=['POST', 'GET'])
 def add_entry():
     if request.method == 'POST':
 
-        title_error = ""
+        blog_title_error = ""
         blog_entry_error = ""
 
         post_title = request.form['blog_title']
@@ -51,12 +51,12 @@ def add_entry():
             return redirect(post_link)
         else:
             if not empty_val(post_title) and not empty_val(post_entry):
-                title_error = "Please enter blog title"
+                blog_title_error = "Please enter blog title"
                 blog_entry_error = "Please enter blog entry"
-                return render_template('new_post.html', blog_entry_error=blog_entry_error, title_error=title_error)
+                return render_template('new_post.html', blog_entry_error=blog_entry_error, blog_title_error=blog_title_error)
             elif not empty_val(post_title):
-                title_error = "Please enter blog title"
-                return render_template('new_post.html', title_error=title_error, post_entry=post_entry)
+                blog_title_error = "Please enter blog title"
+                return render_template('new_post.html', blog_title_error=blog_title_error, post_entry=post_entry)
             elif not empty_val(post_entry):
                 blog_entry_error = "Please enter blog entry"
                 return render_template('new_post.html', blog_entry_error=blog_entry_error, post_title=post_title)
