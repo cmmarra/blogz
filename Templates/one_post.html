@@ -2,10 +2,13 @@
 
 {% block content %}
     
-<h1>My Blog Post</h1>
-    <div class="main">
-            <h2>{{one_post.title}}</h2>
-            <p>{{one_post.post}}</p>
+<h1>Individual Blog Posts</h1>
+
+    <div>
+        <h2>{{one_post.title}}</h2>
+        <p class="entry">{{one_post.post}}</p>
+        <p class="byline">written by <a href="./blog?owner_id={{one_post.owner_id}}">{{one_post.owner.username}}</a></p>
     </div>
     
+
 {% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Log In</h1>
+    <!--  form action needs to match the url you want it to go to after submit -->
+    <form action="/login" method='POST'>
+        <label>Username<input name="username" type="text" value='{{username}}' />
+        </label>
+        <label>Password<input name="password" type="password" value='{{password}}' />
+        </label>
+        <input class="submit" type="submit" value="Log In" />
+    </form>
+
+    <p>New to Blogz? <a href="/signup">Sign Up</a>!</p>
+    
+{% endblock %} 

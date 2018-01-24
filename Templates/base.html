@@ -1,18 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Build A Blog</title>
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Blogz</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css')}}">
 </head>
-
 <body>
 
-<header>
-<nav><a href="/blog">Main Blog Page</a> <a href="/newpost">Add Blog Entry</a></nav>
-</header>
+    <header>
+        <nav>
+            <ul class="base">
+                {% if 'username' not in session %}
+                <li class="nav"><a href="/">Home</a></li>
+                <li class="nav"><a href="/blog">Blog</a></li>
+                <li class="nav"><a href="/login">Log In</a></li>
+                {% else %}
+                <li class="nav"><a href="/">Home</a></li>
+                <li class="nav"><a href="/blog">Blog</a></li>
+                <li class="nav"><a href="/newpost">New Blog Entry</a></li>
+                <li class="nav"><a href="/logout">Log Out</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
 
-{% block content %}
-{% endblock %}
+    <p class="flash">  
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            <ul>
+            {% for category,message in messages %}
+                <li class="{{category}}">{{message}}</li>
+            {% endfor %}
+            </ul>
+        {% endwith %}
+
+    </p>
+
+    {% block content %}
+    {% endblock %}
 
 </body>
 </html>
