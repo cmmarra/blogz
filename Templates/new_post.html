@@ -3,17 +3,11 @@
 {% block content %}    
     
     <h1>New Blog Entry</h1>
-    <!--  form action needs to match the url you want it to go to after submit -->
     <form action="/newpost" method='POST'>
-
-        <label>
-            <span class="form_label">Title</span>
-            <input name="blog_title" type="text" value="{{post_title}}">
+        <label>Title<input name="blog_title" type="text" value="{{post_title}}"/>
+        </label>Blog Entry<textarea name="blog_post" type="textarea" rows="10">{{post_entry}}</textarea>
         </label>
-            <span class="form_label">Blog Entry</span>
-            <textarea name="blog_post" type="textarea" rows="10">{{post_entry}}</textarea>
-        </label>
-        <input class="submit" type="submit" value="Add Entry" />
+        <input class="submit" type="submit" value="Add Entry"/>
     </form>
 
 {% endblock %} 
